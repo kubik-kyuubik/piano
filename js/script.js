@@ -1,6 +1,6 @@
 const pianoKey = document.querySelectorAll('.piano-keys .key');
 const volumeSlider = document.querySelector('.volume-slider input');
-const keysCheekbox = document.querySelector('.keys-checkbox input');
+const keysCheckbox = document.querySelector('.keys-checkbox input');
 
 
 let allKeys = []; 
@@ -27,13 +27,13 @@ const showHideKeys = () => {
 }
 
 const handleVolume = (e) => {
-    audio.volume = e.target.value;    
+    audio.volume = e.target.value; // Громкость звука    
 }
 
 const pressedKey = (e) => {
     // Проверка есть ли нажатая клавиша в массиве
     if(allKeys.includes(e.key)) playTune(e.key);
 }
-keysCheekbox.addEventListener('click', showHideKeys);
+keysCheckbox.addEventListener('click', showHideKeys);
 volumeSlider.addEventListener('input', handleVolume);
 document.addEventListener('keydown', pressedKey);
