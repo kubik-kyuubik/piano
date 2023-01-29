@@ -1,5 +1,7 @@
 const pianoKey = document.querySelectorAll('.piano-keys .key');
 const volumeSlider = document.querySelector('.volume-slider input');
+const keysCheekbox = document.querySelector('.keys-checkbox input');
+
 
 let allKeys = []; 
 let audio = new Audio('../tunes/a.wav'); //Аудио по умолчанию
@@ -16,20 +18,22 @@ const playTune = (key) => {
 };
 
 pianoKey.forEach(key => {
-    allKeys.push(key.dataset.key);
-    //Добавление обработчика события
-    key.addEventListener('click', () => playTune(key.dataset.key));
+    allKeys.push(key.dataset.key);    
+    key.addEventListener('click', () => playTune(key.dataset.key));//Добавление обработчика события
 });
 
+const showHideKeys = () => {
+    pianoKey.forEach(key => key.classList.toggle('hide')); // Добавление-удаление класса hide
+}
+
 const handleVolume = (e) => {
-    audio.volume = e.target.value;
-    console.log(e);
+    audio.volume = e.target.value;    
 }
 
 const pressedKey = (e) => {
     // Проверка есть ли нажатая клавиша в массиве
     if(allKeys.includes(e.key)) playTune(e.key);
 }
-
+keysCheekbox.addEventListener('click', showHideKeys);
 volumeSlider.addEventListener('input', handleVolume);
 document.addEventListener('keydown', pressedKey);
