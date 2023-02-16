@@ -4,10 +4,10 @@ const keysCheckbox = document.querySelector('.keys-checkbox input');
 
 
 let allKeys = []; 
-let audio = new Audio('../tunes/a.wav'); //Аудио по умолчанию
+let audio = new Audio('./tunes/a.wav'); //Аудио по умолчанию
 
 const playTune = (key) => {
-    audio.src = `../tunes/${key}.wav`;
+    audio.src = `./tunes/${key}.wav`;
     audio.play();
 
     const clickedKey = document.querySelector(`[data-key="${key}"]`); //Получение нажатой клавиши
